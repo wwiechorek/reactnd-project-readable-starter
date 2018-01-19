@@ -7,7 +7,8 @@ import TopbarFilter from '../../../Components/TopbarFilter'
 
 class Category extends Component {
   state = {
-    categoryName: ''
+    categoryName: '',
+    posts: []
   }
 
   loadPost(category) {
@@ -25,13 +26,19 @@ class Category extends Component {
       this.loadPost(nextProps.match.params.category)
     }
 
-    let category = nextProps.categories.filter( category => category.path === nextProps.match.params.category)[0]
+    let category = nextProps.categories.find( category => category.path === nextProps.match.params.category)
     if(category) {
       this.setState({
         ...this.props.category,
         categoryName: category.name
       })
     }
+
+    if(nextProps.posts !== this.props.posts) 
+    this.setState({
+      ...this.state,
+      posts: nextProps.posts
+    })
     
   }
 
@@ -40,12 +47,11 @@ class Category extends Component {
   }
 
   render() {
-
     return (
       <div>
         <TopbarFilter title={this.state.categoryName} handleOrder={ this.handleOrder } />
 
-        {this.props.posts.map(post => (
+        {this.state.posts.map(post => (
           <ItemBlog key={post.id} data={post} />
         ))}
       </div>
