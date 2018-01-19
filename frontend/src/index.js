@@ -8,8 +8,7 @@ import thunk from 'redux-thunk'
 import reducer from './reducers'
 
 import './index.css'
-// import App from './App'
-import Layout from './Layout'
+import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 
 const enhancers = []
@@ -38,7 +37,7 @@ const store = createStore(
 ReactDOM.render(
                 <Provider store={store}>
                     <BrowserRouter>
-                        <Layout />
+                        <App />
                     </BrowserRouter>
                 </Provider>
             , document.getElementById('root'))
