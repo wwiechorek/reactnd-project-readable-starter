@@ -1,31 +1,20 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { testar } from '../actions'
+import { Route } from 'react-router-dom'
 
-import './App.css'
+import Template from '../Template'
+
+import Home from './pages/Home'
+import Category from './pages/Category'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">      
-          <h1 className="App-title" onClick={ () => this.props.testar() }>Welcome to React</h1>
-          { this.props.test.action }
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Template>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/category/:category" component={Category} />
+      </Template>
     )
   }
 }
 
-const mapStateToProps = state => ({
-  test: state.test
-})
-
-const mapDispatchToProps = dispatch => ({
-  testar: (data) => dispatch(testar(data))
-})
-
-export default connect( mapStateToProps, mapDispatchToProps )(App)
+export default App
