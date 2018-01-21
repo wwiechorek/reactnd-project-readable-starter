@@ -17,7 +17,7 @@ export const loadPosts = () => dispatch => {
     .then(res => dispatch(receivePosts(res)))
 }
 
-export const loadPostsCategory = (category) => dispatch => {
+export const loadPostsCategory = category => dispatch => {
     posts.getAllByCategory(category)
     .then( res => res.filter( post => !post.deleted) )
     .then(res => dispatch(receivePosts(res)))
