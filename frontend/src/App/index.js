@@ -3,15 +3,14 @@ import { Route } from 'react-router-dom'
 
 import Template from '../Template'
 
-import Home from './pages/Home'
-import Category from './pages/Category'
+import List from './pages/List'
 
 class App extends Component {
   render() {
     return (
       <Template>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/category/:category" component={Category} />
+        <Route exact path="/" component={List} />
+        <Route exact path="/category/:category" component={List} />
       </Template>
     )
   }

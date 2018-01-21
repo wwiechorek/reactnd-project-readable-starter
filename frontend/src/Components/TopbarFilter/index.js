@@ -10,8 +10,8 @@ class TopbarFilter extends Component {
         <div className='floatright'>
             <small>Ordenado por: </small>
             <select className='select-no-border' onChange={ event => this.props.handleOrder( event.target.value ) }>
-                <option value='date'>Data de publicação</option>
                 <option value='rate'>Melhor avaliação</option>
+                <option value='date'>Data de publicação</option>
             </select>
         </div>
         <hr className='topbar-filter'/>

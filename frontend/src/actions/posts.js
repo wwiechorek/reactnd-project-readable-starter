@@ -8,6 +8,10 @@ export const receivePosts = posts => ({
 })
 
 export const loadPosts = () => dispatch => {
+    dispatch({
+        type: LOADED_POSTS,
+        payload: []
+    })
     posts.getAll()
     .then( res => res.filter( post => !post.deleted) )
     .then(res => dispatch(receivePosts(res)))
@@ -18,8 +22,3 @@ export const loadPostsCategory = (category) => dispatch => {
     .then( res => res.filter( post => !post.deleted) )
     .then(res => dispatch(receivePosts(res)))
 }
-
-export const clearPosts = () => ({
-    type: LOADED_POSTS,
-    payload: []
-})

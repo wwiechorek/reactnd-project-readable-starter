@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { loadPosts, clearPosts } from '../../../actions/posts'
+import { loadPosts } from '../../../actions/posts'
 import ItemBlog from '../../../Components/ItemBlog'
+import TopbarFilter from '../../../Components/TopbarFilter'
 class Home extends Component {
 
   componentWillMount() {
-    this.props.clearPosts()
     this.props.loadPosts()
   }
 
   render() {
     return (
       <div>
+        <TopbarFilter title='Home' handleOrder={ this.handleOrder } />
         {this.props.posts.map(post => (
           <ItemBlog key={post.id} data={post} />
         ))}
@@ -25,8 +26,7 @@ const mapStateToProps = store => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  loadPosts: (data) => dispatch(loadPosts(data)),
-  clearPosts: () => dispatch(clearPosts()),
+  loadPosts: (data) => dispatch(loadPosts(data))
 })
 
 export default connect( mapStateToProps, mapDispatchToProps )(Home)
