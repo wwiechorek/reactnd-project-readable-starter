@@ -1,5 +1,6 @@
 import {
-    LOADED_POSTS
+    LOADED_POSTS,
+    VOTE_POST,
 } from '../actions/posts'
 
 const initialTestState = {
@@ -13,6 +14,15 @@ export default ( state = initialTestState, action ) =>  {
                 ...state,
                 data: action.payload
             }
+        case VOTE_POST: {
+            return {
+                ...state,
+                data: state.data.map(item => item.id !== action.payload.id ? item : {
+                    ...item,
+                    voteScore: item.voteScore + action.payload.inc
+                })
+            }
+        }
         default:
             return state
     }

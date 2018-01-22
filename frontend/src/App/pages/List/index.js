@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { loadPosts, loadPostsCategory } from '../../../actions/posts'
-import ItemBlog from '../../../Components/ItemBlog'
-import TopbarFilter from '../../../Components/TopbarFilter'
+import ItemBlog from '../../Components/ItemBlog'
+import TopbarFilter from '../../Components/TopbarFilter'
 class Home extends Component {
   state = {
-    title: 'Home',
+    title: 'Todas categorias',
     category: '',
     posts: [],
     order: 'rate'

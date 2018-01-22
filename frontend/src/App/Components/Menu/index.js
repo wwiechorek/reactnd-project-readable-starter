@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { loadCategories } from '../../actions/categories'
+import { loadCategories } from '../../../actions/categories'
 
 class Menu extends Component {
     state = {
@@ -38,7 +38,7 @@ class Menu extends Component {
                     </div>
                     
                     <ul>
-                        <li> <Link onClick={ this.menuSelected } to={`/`}> Home </Link> </li>                    
+                        <li> <Link onClick={ this.menuSelected } to={`/`}> Todas categorias </Link> </li>                    
                         { this.props.categories.map( category => (
                             <li key={category.path}>
                                 <Link onClick={ this.menuSelected } to={`/category/${category.path}`}>{category.name}</Link>

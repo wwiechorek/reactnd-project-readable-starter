@@ -172,6 +172,29 @@ hr.topbar-filter {
     float: right;
 }
 
+.post-title {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.post-author, .post-data {
+    float: left;
+    margin-right: 20px;
+    font-size: 12px;
+}
+.post-body {
+    margin-top: 80px;
+    margin-bottom: 50px;
+}
+.post-rate {
+    float: right;
+}
+
+.post-commnets h3 {
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+}
 @media (min-width: 1000px) {
     .box-item-blog {
         width: 33.33%;    
