@@ -4,6 +4,7 @@ export const LOADED_COMMENTS = 'LOADED_COMMENTS'
 export const DELETED_COMMENT = 'DELETED_COMMENT'
 export const VOTE_COMMENT = 'VOTE_COMMENT'
 export const CREATED_COMMENT = 'CREATED_COMMENT'
+export const SAVED_COMMENT = 'SAVED_COMMENT'
 
 export const receiveComments = data => ({
     type: LOADED_COMMENTS,
@@ -42,4 +43,14 @@ export const deleteComment = id => dispatch =>
     .then( res => dispatch({
         type: DELETED_COMMENT,
         payload: id
+    }))
+
+export const saveComment = (id, data) => dispatch =>
+    comments.save(id, data)
+    .then( res => dispatch({
+        type: SAVED_COMMENT,
+        payload: {
+            id,
+            ...data
+        }
     }))

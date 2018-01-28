@@ -3,6 +3,7 @@ import {
     VOTE_COMMENT,
     CREATED_COMMENT,
     DELETED_COMMENT,
+    SAVED_COMMENT,
 } from '../actions/comments'
 
 const initialTestState = {
@@ -34,6 +35,21 @@ export default ( state = initialTestState, action ) =>  {
             let index = state.data.indexOf( item )
             let data = state.data
             data.splice(index, 1)
+            return {
+                ...state,
+                data: [
+                    ...data
+                ]
+            }
+        }
+        case SAVED_COMMENT: {
+            let item = state.data.find( item => item.id === action.payload.id )
+            let index = state.data.indexOf( item )
+            let data = state.data
+            data[index] = {
+                ...item,
+                body: action.payload.body
+            }
             return {
                 ...state,
                 data: [

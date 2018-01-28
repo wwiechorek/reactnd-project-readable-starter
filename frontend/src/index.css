@@ -60,3 +60,9 @@ body {
   position:relative;
   top:2px;
 }
+
+.btn-link {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}

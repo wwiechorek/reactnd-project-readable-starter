@@ -34,3 +34,14 @@ export const deleteComment = id =>
             headers,
             method: 'DELETE',
         })
+
+export const save = (id, { timestamp, body }) =>
+    fetch(`${api}/comments/${id}`,
+        {
+            headers,
+            method: 'PUT',
+            body: JSON.stringify({
+                timestamp,
+                body,
+            })
+        })
