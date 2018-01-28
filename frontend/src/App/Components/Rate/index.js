@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { votePost } from '../../../actions/posts'
+import { voteComment } from '../../../actions/comments'
 
 class Rate extends Component {
     handleVote(inc) {
@@ -10,7 +11,7 @@ class Rate extends Component {
                 break;
                 
             case 'comment':
-                // this.props.voteComment(this.props.id, inc)
+                this.props.voteComment(this.props.id, inc)
                 break;
                 
             default:
@@ -59,7 +60,8 @@ class Rate extends Component {
 const mapStateToProps = store => ({})
 
 const mapDispatchToProps = dispatch => ({
-    votePost: (id, inc) => dispatch(votePost(id, inc))
+    votePost: (id, inc) => dispatch(votePost(id, inc)),
+    voteComment: (id, inc) => dispatch(voteComment(id, inc)),
 })
 
 export default connect( mapStateToProps, mapDispatchToProps )(Rate)

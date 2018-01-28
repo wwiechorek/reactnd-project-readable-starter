@@ -19,7 +19,7 @@ class Home extends Component {
         <h1 className='post-title'> {post.title} </h1>
         <div className='clearfix'>
           <div className='post-author'> Por {post.author} </div>
-          <div className='post-data'> {`${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`} </div>
+          <div className='post-data'> {`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`} </div>
         
           <div className='post-rate'> <Rate id={post.id} type='post' score={post.voteScore} /> </div>
         </div>
@@ -27,7 +27,7 @@ class Home extends Component {
           {post.body}
         </div>
 
-        <Comments id={post.id} />
+        <Comments id={this.props.match.params.id} />
       </div>
     )
   }

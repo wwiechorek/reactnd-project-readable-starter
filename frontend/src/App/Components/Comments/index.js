@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { loadComments } from '../../../actions/comments'
 import Comment from '../Comment'
+import SaveComment from '../SaveComment'
 class Comments extends Component {
     
     componentWillMount() {
@@ -16,6 +17,9 @@ class Comments extends Component {
                 { comments.map( comment => (
                     <Comment key={comment.id} data={comment} />
                 ))}
+
+                <hr />
+                <SaveComment parentId={this.props.id} />
             </div>
         )
     }

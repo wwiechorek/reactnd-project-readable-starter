@@ -28,10 +28,12 @@ export const loadPostsCategory = category => dispatch =>
     .then( res => res.filter( post => !post.deleted) )
     .then(res => dispatch(receivePosts(res)))
 
-export const loadPost = id => dispatch =>
+export const loadPost = id => dispatch => {
+
     posts.get(id)
     .then( res => res.deleted ? {} : res )    
     .then( res => dispatch(receivePost(res)))
+}
 
 export const votePost = (id, inc) => dispatch =>
     posts.vote(id, inc)

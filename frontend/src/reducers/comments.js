@@ -1,8 +1,8 @@
 import {
     LOADED_COMMENTS,
+    VOTE_COMMENT,
+    CREATED_COMMENT,
     DELETED_COMMENT,
-    NEW_COMMENT,
-    UPDATE_COMMENT
 } from '../actions/comments'
 
 const initialTestState = {
@@ -17,19 +17,31 @@ export default ( state = initialTestState, action ) =>  {
                 data: action.payload
             }
         }
+        case CREATED_COMMENT: {
+            let newData = state.data
+            action.payload.voteScore = 1
+            action.payload.parentDeleted = false
+            newData.push(action.payload)
+            return {
+                ...state,
+                data: [
+                    ...newData
+                ]
+            }
+        }
         case DELETED_COMMENT: {
+            //to-do
             return {
-                ...state,
+                ...state
             }
         }
-        case NEW_COMMENT: {
+        case VOTE_COMMENT: {
             return {
                 ...state,
-            }
-        }
-        case UPDATE_COMMENT: {
-            return {
-                ...state,
+                data: state.data.map(item => item.id !== action.payload.id ? item : {
+                    ...item,
+                    voteScore: item.voteScore + action.payload.inc
+                })
             }
         }
         default:
