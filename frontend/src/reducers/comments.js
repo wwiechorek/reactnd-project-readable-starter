@@ -30,9 +30,15 @@ export default ( state = initialTestState, action ) =>  {
             }
         }
         case DELETED_COMMENT: {
-            //to-do
+            let item = state.data.find( item => item.id === action.payload )
+            let index = state.data.indexOf( item )
+            let data = state.data
+            data.splice(index, 1)
             return {
-                ...state
+                ...state,
+                data: [
+                    ...data
+                ]
             }
         }
         case VOTE_COMMENT: {
