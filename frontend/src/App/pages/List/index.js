@@ -3,11 +3,10 @@ import { connect } from 'react-redux'
 import { loadPosts, loadPostsCategory } from '../../../actions/posts'
 import ItemBlog from '../../Components/ItemBlog'
 import TopbarFilter from '../../Components/TopbarFilter'
-class Home extends Component {
+class List extends Component {
   state = {
     title: 'Todas categorias',
     category: '',
-    posts: [],
     order: 'rate'
   }
 
@@ -69,7 +68,7 @@ class Home extends Component {
     return (
       <div>
         <TopbarFilter title={this.state.title} handleOrder={ (order) => this.handleOrder(order) } />
-        {this.props.posts.map(post => (
+        {this.props.posts.length && this.props.posts.map(post => (
           <ItemBlog key={post.id} data={post} />
         ))}
       </div>
@@ -87,4 +86,4 @@ const mapDispatchToProps = dispatch => ({
   loadPostsCategory: (data) => dispatch(loadPostsCategory(data)),
 })
 
-export default connect( mapStateToProps, mapDispatchToProps )(Home)
+export default connect( mapStateToProps, mapDispatchToProps )(List)

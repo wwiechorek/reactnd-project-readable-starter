@@ -21,3 +21,21 @@ export const vote = (id, inc) =>
                 option: inc > 0 ? 'upVote' : 'downVote'
             })
         })
+
+export const deletePost = id => 
+    fetch(`${api}/posts/${id}`,
+        {
+            headers,
+            method: 'DELETE',
+        })
+
+export const save = (id, { title, body }) =>
+    fetch(`${api}/posts/${id}`,
+    {
+        headers,
+        method: 'PUT',
+        body: JSON.stringify({
+            title,
+            body,
+        })
+    })

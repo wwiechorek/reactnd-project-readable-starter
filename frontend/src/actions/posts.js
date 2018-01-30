@@ -2,6 +2,7 @@ import * as posts from '../utils/posts'
 
 export const LOADED_POSTS = 'LOADED_POSTS'
 export const VOTE_POST = 'VOTE_POST'
+export const SAVED_POST = 'SAVED_POST'
 
 export const receivePosts = posts => ({
     type: LOADED_POSTS,
@@ -42,5 +43,15 @@ export const votePost = (id, inc) => dispatch =>
         payload: {
             id,
             inc
+        }
+    }))
+
+export const savePost = (id, data) => dispatch =>
+    posts.save(id, data)
+    .then( res => dispatch({
+        type: SAVED_POST,
+        payload: {
+            id,
+            ...data
         }
     }))
