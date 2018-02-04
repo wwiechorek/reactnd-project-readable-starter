@@ -16,7 +16,7 @@ class ItemBlog extends Component {
 
     return (
 
-        <Link to={`post/${post.id}`} className='box-item-blog'>
+        <Link to={`/post/${post.id}`} className='box-item-blog'>
             <div className='blog-title'>
                 {post.title}
             </div>

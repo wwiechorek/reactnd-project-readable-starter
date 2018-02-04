@@ -5,6 +5,7 @@ import Template from './Components/Template'
 
 import List from './pages/List'
 import Post from './pages/Post'
+import SavePost from './pages/SavePost'
 
 class App extends Component {
   render() {
@@ -12,7 +13,9 @@ class App extends Component {
       <Template>
         <Route exact path="/" component={List} />
         <Route exact path="/category/:category" component={List} />
+        <Route exact path="/create" component={SavePost} />
         <Route exact path="/post/:id" component={Post} />
+        <Route exact path="/post/:id/edit" component={SavePost} />
       </Template>
     )
   }

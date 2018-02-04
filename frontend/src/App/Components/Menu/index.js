@@ -45,7 +45,7 @@ class Menu extends Component {
                             </li>
                         )) }
                         <li className='menu-divider' />
-                        <li> <Link onClick={ this.menuSelected } to={`/post/new`}> Criar novo post </Link> </li>
+                        <li> <Link onClick={ this.menuSelected } to={`/create`}> Criar novo post </Link> </li>
                     </ul>
                 </div>
                 <div className='menu-box-shadow' onClick={ this.toggleMenu } />

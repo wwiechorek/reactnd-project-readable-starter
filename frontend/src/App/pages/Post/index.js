@@ -9,7 +9,6 @@ import Comments from '../../Components/Comments'
 class Home extends Component {
 
   state = {
-    isEdit: false,
     body: '',
     title: '',
     id: null
@@ -41,10 +40,8 @@ class Home extends Component {
     })
   }
 
-  handleToggleEdit() {
-    this.setState({
-        isEdit: !this.state.isEdit
-    })
+  handleEdit() {
+    this.props.history.push('/post/' + this.state.id + '/edit')    
   }
 
   handleSave() {
@@ -71,68 +68,27 @@ class Home extends Component {
     return (
       <div>
         <h1 className='post-title'>
-          {!this.state.isEdit ? post.title : (
-            <div>
-              <input
-                value={this.state.title}
-                onChange={ e => {
-                    this.setState({
-                        ...this.state,
-                        title: e.target.value
-                    })
-                }}
-                style={{
-                  fontSize: '28px'
-                }}
-                placeholder='Titulo'
-                className='form-control' />
-              <br />
-            </div>
-          )}
+          {post.title}
         </h1>
         <div className='clearfix'>
           <div className='post-author'> Por {post.author} </div>
           <div className='post-data'> {`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`} </div>
-          {!this.state.isEdit && (
-            <div className='post-rate'>
-              <BtnsActions
-                handleDelete={
-                  () => this.handleDelete(this.props.post.id)
-                }
-                handleEdit={
-                  () => this.handleToggleEdit()
-                }/>
-              <Rate id={post.id} type='post' score={post.voteScore} />
-            </div>
-          )}
+          
+          <div className='post-rate'>
+            <BtnsActions
+              handleDelete={
+                () => this.handleDelete(this.props.post.id)
+              }
+              handleEdit={
+                () => this.handleEdit()
+              }/>
+            <Rate id={post.id} type='post' score={post.voteScore} />
+          </div>
+          
         </div>
         <div className='post-body'>
-          {!this.state.isEdit ? post.body : (
-            <div>
-              <textarea
-                rows={20}
-                value={this.state.body}
-                onChange={ e => {
-                    this.setState({
-                        ...this.state,
-                        body: e.target.value
-                    })
-                }}
-                className='form-control'
-                style={{
-                  fontSize: '14px'
-                }} />
-              <br />
-            </div>
-          )}
+          {post.body}
         </div>
-        
-        {this.state.isEdit && (
-          <div style={{ float: 'right', width: '100%', textAlign: 'right' }}>
-              <button type='reset' onClick={ () => this.handleToggleEdit() } className='btn-link'> Cancelar </button>
-              <button type='submit' className='btn' onClick={() => this.handleSave()}>Salvar</button>
-          </div>
-        )}
 
         <Comments id={this.props.match.params.id} />
       </div>

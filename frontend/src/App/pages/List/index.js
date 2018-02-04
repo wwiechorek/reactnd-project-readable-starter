@@ -12,7 +12,9 @@ class List extends Component {
 
   componentWillMount() {
     this.handleLoadPosts(this.props.match.params.category)
+
   }
+
 
   componentWillUpdate(nextProps, nextState) {
     let category = nextProps.match.params.category
@@ -20,12 +22,17 @@ class List extends Component {
     if(category !== this.props.match.params.category)
     this.handleLoadPosts(category)
 
-    if(this.props.categories !== nextProps.categories)
-      if(this.state.category !== '' || nextState.category !== this.state.category) {
-        this.setState({
-          title: nextProps.categories.find(category => category.path === this.state.category).name
-        })
+    if(this.props.categories !== nextProps.categories || nextProps.categories.length > 0) {
+      if(nextState.category !== '') {
+        let title = nextProps.categories.find(category => category.path === nextState.category).name
+        
+        if(title !== this.state.title) {
+          this.setState({
+            title
+          })
+        }
       }
+    }
 
 
     if(this.props.posts !== nextProps.posts) {
@@ -42,9 +49,9 @@ class List extends Component {
       this.props.loadPosts()
     
       this.setState({
-      ...this.state,
-      category
-    })
+        ...this.state,
+        category
+      })
   }
 
   applyFilter() {
@@ -68,7 +75,7 @@ class List extends Component {
     return (
       <div>
         <TopbarFilter title={this.state.title} handleOrder={ (order) => this.handleOrder(order) } />
-        {this.props.posts.length && this.props.posts.map(post => (
+        {this.props.posts.length > 0 && this.props.posts.map(post => (
           <ItemBlog key={post.id} data={post} />
         ))}
       </div>

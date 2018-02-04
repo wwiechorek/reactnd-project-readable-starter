@@ -29,7 +29,7 @@ export const deletePost = id =>
             method: 'DELETE',
         })
 
-export const save = (id, { title, body }) =>
+export const save = (id, { title, body, category }) =>
     fetch(`${api}/posts/${id}`,
     {
         headers,
@@ -37,5 +37,15 @@ export const save = (id, { title, body }) =>
         body: JSON.stringify({
             title,
             body,
+            category
         })
     })
+
+export const createPost = ( data ) =>
+    fetch(`${api}/posts/`,
+    {
+        headers,
+        method: 'POST',
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
