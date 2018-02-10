@@ -3,6 +3,7 @@ import * as posts from '../utils/posts'
 export const LOADED_POSTS = 'LOADED_POSTS'
 export const VOTE_POST = 'VOTE_POST'
 export const SAVED_POST = 'SAVED_POST'
+export const DELETED_POST = 'DELETED_POST'
 
 export const receivePosts = posts => ({
     type: LOADED_POSTS,
@@ -54,4 +55,11 @@ export const savePost = (id, data) => dispatch =>
             id,
             ...data
         }
+    }))
+
+export const deletePost = id => dispatch =>
+    posts.deletePost(id)
+    .then( res => dispatch({
+        type: DELETED_POST,
+        payload: id
     }))

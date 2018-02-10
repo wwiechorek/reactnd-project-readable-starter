@@ -17,7 +17,8 @@ class Home extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if(!nextProps.post.id)
+
+    if(!nextProps.post || !nextProps.post.id)
       this.props.history.push('/')
 
     

@@ -1,7 +1,8 @@
 import {
     LOADED_POSTS,
     VOTE_POST,
-    SAVED_POST
+    SAVED_POST,
+    DELETED_POST
 } from '../actions/posts'
 
 const initialTestState = {
@@ -40,6 +41,24 @@ export default ( state = initialTestState, action ) =>  {
                 ]
             }
         }
+
+        case DELETED_POST: {
+            let data = state.data
+
+            let item = data.find( item => item.id === action.payload )
+            item = data.indexOf(item)
+            
+            data.splice( item, 1 )
+
+
+            return {
+                ...state,
+                data: [
+                    ...data
+                ]
+            }
+        }
+
         default:
             return state
     }

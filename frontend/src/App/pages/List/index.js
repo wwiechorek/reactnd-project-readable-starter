@@ -12,7 +12,6 @@ class List extends Component {
 
   componentWillMount() {
     this.handleLoadPosts(this.props.match.params.category)
-
   }
 
 
@@ -87,11 +86,6 @@ const mapStateToProps = store => ({
   posts: store.posts.data,
   categories: store.categories.data
 })
-
-// const mapDispatchToProps = dispatch => ({
-//   loadPosts: (data) => dispatch(loadPosts(data)),
-//   loadPostsCategory: (data) => dispatch(loadPostsCategory(data)),
-// })
 
 const mapDispatchToProps = {
   loadPosts,

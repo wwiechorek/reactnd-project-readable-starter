@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import { deletePost } from '../../../utils/posts'
+import { deletePost } from '../../../actions/posts'
+
 import BtnsActions from '../../Components/BtnsActions'
 import Rate from '../../Components/Rate'
 
@@ -24,10 +26,7 @@ class RateActionPost extends Component {
     }
 
     handleDelete(id) {
-        deletePost(id)
-        .then( d => {
-            window.location.reload()
-        })
+        this.props.deletePost( id )
     }
 
     handleEdit() {
@@ -51,4 +50,14 @@ class RateActionPost extends Component {
 
 }
 
-export default withRouter(RateActionPost)
+
+const mapStateToProps = store => ({
+})
+
+const mapDispatchToProps = {
+    deletePost
+}
+
+RateActionPost = connect( mapStateToProps, mapDispatchToProps )(RateActionPost)
+RateActionPost = withRouter(RateActionPost)
+export default RateActionPost
