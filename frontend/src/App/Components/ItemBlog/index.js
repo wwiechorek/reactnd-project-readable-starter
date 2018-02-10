@@ -1,28 +1,24 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import RateActionPost from '../../Components/RateActionPost'
+
 
 class ItemBlog extends Component {
   render() {
     const post = this.props.data
-    let date = new Date(post.timestamp)
-    let day = date.getDay()
-    let month = date.getMonth() + 1
-    let year = date.getFullYear()
-
-    day = day > 9 ? day : `0${day}`
-    month = month > 9 ? month : `0${month}`
-
-    date = `${ day }/${ month }/${ year }`
-
+    let date = new Date(post.timestamp).toLocaleDateString()
     return (
-
-        <Link to={`/post/${post.id}`} className='box-item-blog'>
-            <div className='blog-title'>
-                {post.title}
-            </div>
-            <div className='blog-body'>
-                {post.body}
-            </div>
+        <div className='box-item-blog'>
+            <Link to={`/${post.category}/${post.id}`}>
+                <div className='blog-title'>
+                    {post.title}
+                </div>
+                <div className='blog-body'>
+                    {post.body}
+                </div>
+            </Link>
+            <RateActionPost id={post.id} inline score={post.voteScore} />
+            
             <div className='blog-score-comments'>
                 ({post.commentCount}) Comentários | Nota: {post.voteScore}
             </div>
@@ -34,7 +30,8 @@ class ItemBlog extends Component {
                     {date}
                 </div>
             </div>
-        </Link>
+            
+        </div>
     )
   }
 }

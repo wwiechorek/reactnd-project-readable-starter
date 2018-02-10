@@ -20,7 +20,7 @@ class Rate extends Component {
     }
     render() {
         return (
-            <div>
+            <div className='rate'>
                 <span style={{
                         fontSize: '12px',
                         position: 'relative',

@@ -134,6 +134,11 @@ hr.topbar-filter {
     color: #333;
 }
 
+.box-item-blog a {
+    text-decoration: none;
+    color: #333;
+}
+
 .box-item-blog:hover {
     opacity: 1;
 }
@@ -191,9 +196,36 @@ hr.topbar-filter {
     float: right;
 }
 
+.post-rate-inline {
+    width: 100%;
+}
+
 .post-commnets h3 {
     border-bottom: 1px solid #ccc;
     padding: 5px;
+}
+
+.btn-actions-bar {
+    float: right;
+    width: 100%;
+    text-align: right;
+    z-index: 100;
+    position: relative
+}
+
+.rate {
+    text-align: right;
+    position: relative;
+    top: 5px;
+}
+
+.post-rate-inline .btn-actions-bar,
+.post-rate-inline .rate {
+    float: right;
+    width: 50%;
+}
+.post-rate-inline .rate {
+    float: left;
 }
 @media (min-width: 1000px) {
     .box-item-blog {

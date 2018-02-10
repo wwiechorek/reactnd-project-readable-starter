@@ -41,7 +41,7 @@ class Menu extends Component {
                         <li> <Link onClick={ this.menuSelected } to={`/`}> Todas categorias </Link> </li>                    
                         { this.props.categories.map( category => (
                             <li key={category.path}>
-                                <Link onClick={ this.menuSelected } to={`/category/${category.path}`}>{category.name}</Link>
+                                <Link onClick={ this.menuSelected } to={`/${category.path}`}>{category.name}</Link>
                             </li>
                         )) }
                         <li className='menu-divider' />

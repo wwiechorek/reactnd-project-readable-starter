@@ -88,9 +88,14 @@ const mapStateToProps = store => ({
   categories: store.categories.data
 })
 
-const mapDispatchToProps = dispatch => ({
-  loadPosts: (data) => dispatch(loadPosts(data)),
-  loadPostsCategory: (data) => dispatch(loadPostsCategory(data)),
-})
+// const mapDispatchToProps = dispatch => ({
+//   loadPosts: (data) => dispatch(loadPosts(data)),
+//   loadPostsCategory: (data) => dispatch(loadPostsCategory(data)),
+// })
+
+const mapDispatchToProps = {
+  loadPosts,
+  loadPostsCategory
+}
 
 export default connect( mapStateToProps, mapDispatchToProps )(List)

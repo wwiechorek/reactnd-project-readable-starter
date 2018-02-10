@@ -4,7 +4,7 @@ export default class BtnsActions extends Component {
 
     render() {
         return(
-            <div style={{float: 'right', width: '100%', textAlign: 'right'}}>
+            <div className='btn-actions-bar'>
                 <span style={{
                     cursor: 'pointer',
                     padding: '4px',

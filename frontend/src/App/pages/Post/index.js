@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { loadPost, savePost } from '../../../actions/posts'
-import { deletePost } from '../../../utils/posts'
+import { loadPost } from '../../../actions/posts'
+import RateActionPost from '../../Components/RateActionPost'
 
-import BtnsActions from '../../Components/BtnsActions'
-import Rate from '../../Components/Rate'
 import Comments from '../../Components/Comments'
 class Home extends Component {
 
@@ -33,37 +31,12 @@ class Home extends Component {
     }
   }
 
-  handleDelete(id) {
-    deletePost(id)
-    .then( d => {
-      this.props.history.push('/')
-    })
-  }
-
-  handleEdit() {
-    this.props.history.push('/post/' + this.state.id + '/edit')    
-  }
-
-  handleSave() {
-    if(this.state.title === '' || this.state.body === '') return
-
-    this.props.savePost( this.state.id, {
-      title: this.state.title,
-      body: this.state.body,
-    })
-    
-    this.setState({
-      ...this.state,
-      isEdit: false
-    })
-
-  }
-
   render() {
 
     const post = this.props.post
     if(!post) return <div />
-    const date = new Date(post.timestamp)
+    const date = new Date(post.timestamp).toLocaleDateString()
+
     
     return (
       <div>
@@ -72,18 +45,9 @@ class Home extends Component {
         </h1>
         <div className='clearfix'>
           <div className='post-author'> Por {post.author} </div>
-          <div className='post-data'> {`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`} </div>
+          <div className='post-data'> {date} </div>
           
-          <div className='post-rate'>
-            <BtnsActions
-              handleDelete={
-                () => this.handleDelete(this.props.post.id)
-              }
-              handleEdit={
-                () => this.handleEdit()
-              }/>
-            <Rate id={post.id} type='post' score={post.voteScore} />
-          </div>
+          <RateActionPost id={this.props.post.id} score={post.voteScore} />
           
         </div>
         <div className='post-body'>
@@ -102,7 +66,6 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => ({
   loadPost: (data) => dispatch(loadPost(data)),
-  savePost: (id, data) => dispatch(savePost(id, data)),
 })
 
 export default connect( mapStateToProps, mapDispatchToProps )(Home)

@@ -37,7 +37,7 @@ class Comment extends Component {
     }
 
     render() {
-        const date = new Date(this.props.data.timestamp)
+        const date = new Date(this.props.data.timestamp).toLocaleDateString()
         return (
             <div style={{marginBottom: '20px', float: 'left', width: '100%'}}>
                 {!this.state.isEdit && (
@@ -55,7 +55,7 @@ class Comment extends Component {
                 <b>{this.props.data.author}</b>
                 <span> - </span>
                 <span style={{ color: '#ccc'}}>
-                    {`${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`}
+                    {date}
                 </span>
                 <br />
                 {this.state.isEdit ?

@@ -12,9 +12,9 @@ class App extends Component {
     return (
       <Template>
         <Route exact path="/" component={List} />
-        <Route exact path="/category/:category" component={List} />
         <Route exact path="/create" component={SavePost} />
-        <Route exact path="/post/:id" component={Post} />
+        <Route exact path="/:category" component={List} />
+        <Route exact path="/:category/:id" component={Post} />
         <Route exact path="/post/:id/edit" component={SavePost} />
       </Template>
     )
