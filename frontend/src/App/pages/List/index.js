@@ -10,7 +10,7 @@ class List extends Component {
     order: 'rate'
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.handleLoadPosts(this.props.match.params.category)
   }
 

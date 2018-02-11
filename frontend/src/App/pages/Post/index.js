@@ -6,7 +6,7 @@ import RateActionPost from '../../Components/RateActionPost'
 import Comments from '../../Components/Comments'
 class Home extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.loadPost(this.props.match.params.id)
   }
 

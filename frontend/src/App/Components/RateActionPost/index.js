@@ -14,7 +14,7 @@ class RateActionPost extends Component {
     }
 
     handleEdit() {
-        this.props.history.push('/post/' + this.state.id + '/edit') 
+        this.props.history.push('/post/' + this.props.id + '/edit') 
     }
 
     render() {

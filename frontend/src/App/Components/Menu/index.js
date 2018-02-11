@@ -10,7 +10,7 @@ class Menu extends Component {
         menuSelected: ''
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.loadCategories()
     }
 

@@ -5,7 +5,7 @@ import Comment from '../Comment'
 import SaveComment from '../SaveComment'
 class Comments extends Component {
     
-    componentWillMount() {
+    componentDidMount() {
         this.props.loadComments(this.props.id)
     }
 
