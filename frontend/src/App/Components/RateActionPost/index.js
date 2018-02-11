@@ -8,22 +8,6 @@ import BtnsActions from '../../Components/BtnsActions'
 import Rate from '../../Components/Rate'
 
 class RateActionPost extends Component {
-   
-    state = {
-        id: null,
-        voteScore: 0
-    }
-
-    componentWillMount() {
-        this.componentWillReceiveProps(this.props)
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            id: nextProps.id,
-            voteScore: nextProps.score
-        })
-    }
 
     handleDelete(id) {
         this.props.deletePost( id )
@@ -38,12 +22,12 @@ class RateActionPost extends Component {
             <div className={`post-rate ${this.props.inline ? 'post-rate-inline' : ''}`}>
                 <BtnsActions
                     handleDelete={
-                        () => this.handleDelete(this.state.id)
+                        () => this.handleDelete(this.props.id)
                     }
                     handleEdit={
                         () => this.handleEdit()
                 }/>
-                <Rate id={this.state.id} type='post' score={this.state.voteScore} />
+                <Rate id={this.props.id} type='post' score={this.props.voteScore} />
             </div>
         )
     }

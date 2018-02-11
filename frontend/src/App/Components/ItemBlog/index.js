@@ -17,7 +17,7 @@ class ItemBlog extends Component {
                     {post.body}
                 </div>
             </Link>
-            <RateActionPost id={post.id} inline score={post.voteScore} />
+            <RateActionPost id={post.id} inline voteScore={post.voteScore} />
             
             <div className='blog-score-comments'>
                 ({post.commentCount}) Comentários | Nota: {post.voteScore}

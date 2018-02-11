@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { v4 as uuid } from 'uuid'
+
 import { connect } from 'react-redux'
 import { createComment } from '../../../actions/comments'
-import * as ids from '../../../helpers/id'
 
 class SaveComment extends Component {
     state = {
@@ -15,7 +16,7 @@ class SaveComment extends Component {
 
         let author = this.state.author
         let message = this.state.message
-        let id = ids.generate()
+        let id = uuid()
 
         if(author === '' || message === '') return
 

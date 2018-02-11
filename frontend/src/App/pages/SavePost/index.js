@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
+import { v4 as uuid } from 'uuid'
+
 import { connect } from 'react-redux'
 import { loadPost, savePost } from '../../../actions/posts'
 import { createPost } from '../../../utils/posts'
-import * as ids from '../../../helpers/id'
+
 
 class EditPost extends Component {
   state = {
@@ -14,7 +16,7 @@ class EditPost extends Component {
     id: null
   }
   
-  componentWillMount() {
+  componentDidMount() {
     if(this.props.match.params.id) {
       this.props.loadPost(this.props.match.params.id)
       this.setState( state => ({
@@ -57,7 +59,7 @@ class EditPost extends Component {
       this.props.history.push('/post/'+id)
       
     } else {
-      id = ids.generate()
+      id = uuid()
       createPost( {
         title: this.state.title,
         body: this.state.body,

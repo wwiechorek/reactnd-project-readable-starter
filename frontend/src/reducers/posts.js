@@ -43,18 +43,10 @@ export default ( state = initialTestState, action ) =>  {
         }
 
         case DELETED_POST: {
-            let data = state.data
-
-            let item = data.find( item => item.id === action.payload )
-            item = data.indexOf(item)
-            
-            data.splice( item, 1 )
-
-
             return {
                 ...state,
                 data: [
-                    ...data
+                    ...state.data.filter( item => item.id !== action.payload )
                 ]
             }
         }

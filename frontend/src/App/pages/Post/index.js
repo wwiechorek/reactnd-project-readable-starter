@@ -6,12 +6,6 @@ import RateActionPost from '../../Components/RateActionPost'
 import Comments from '../../Components/Comments'
 class Home extends Component {
 
-  state = {
-    body: '',
-    title: '',
-    id: null
-  }
-
   componentWillMount() {
     this.props.loadPost(this.props.match.params.id)
   }
@@ -20,16 +14,6 @@ class Home extends Component {
 
     if(!nextProps.post || !nextProps.post.id)
       this.props.history.push('/')
-
-    
-    if(nextProps.post) {
-      this.setState({
-        ...this.state,
-        body: nextProps.post.body,
-        title: nextProps.post.title,
-        id: nextProps.post.id,
-      })
-    }
   }
 
   render() {
@@ -48,7 +32,7 @@ class Home extends Component {
           <div className='post-author'> Por {post.author} </div>
           <div className='post-data'> {date} </div>
           
-          <RateActionPost id={this.props.post.id} score={post.voteScore} />
+          <RateActionPost id={this.props.post.id} voteScore={post.voteScore} />
           
         </div>
         <div className='post-body'>
